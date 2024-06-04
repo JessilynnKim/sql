@@ -5,8 +5,14 @@ Create a logical model for a small bookstore. 📚
 
 At the minimum it should have employee, order, sales, customer, and book entities (tables). Determine sensible column and table design based on what you know about these concepts. Keep it simple, but work out sensible relationships to keep tables reasonably sized. Include a date table. There are several tools online you can use, I'd recommend [_Draw.io_](https://www.drawio.com/) or [_LucidChart_](https://www.lucidchart.com/pages/).
 
+![Assignment1 - model Design](https://github.com/JessilynnKim/sql/assets/166756942/11a52906-c39f-4725-b1bd-5544944de6b4)
+
+
 ## Question 2
 We want to create employee shifts, splitting up the day into morning and evening. Add this to the ERD.
+![Assignment1 - model Design - Question2](https://github.com/JessilynnKim/sql/assets/166756942/1e934484-d505-43a3-9867-5cb0e96eac04)
+
+
 
 ## Question 3
 The store wants to keep customer addresses. Propose two architectures for the CUSTOMER_ADDRESS table, one that will retain changes, and another that will overwrite. Which is type 1, which is type 2?
@@ -14,8 +20,12 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 _Hint, search type 1 vs type 2 slowly changing dimensions._
 
 Bonus: Are there privacy implications to this, why or why not?
-```
-Your answer...
+``
+
+
+Type 1 slowly changing dimension is where existing values are overwritten by new values and history is not retained. In this case, if customers are updating address, most up to date address will be in the latested record. 
+Type 2 slowly changing dimension is where you add new row for the new value while maintaining existing row. This way, you have historical data and changes. In this case, if customers are updating addresses, there will be additional record which is the same for everything  but the changed field. For both types, there should be login and timestamp when the changes have been updated. Type 2 allows for auditing function and able to check if there were data issues and where the data issue occurred. Keeping customer address may lead to privacy issue. In order to avoid any issues relating to privacy, there should be customer ID and other personal detail that are not directly linked to customer address in order to minimize privacy issues but still able to get customer detail when required. 
+
 ```
 
 ## Question 4
@@ -25,6 +35,9 @@ Highlight at least two differences between it and your ERD. Would you change any
 ```
 Your answer...
 ```
+My ERD has simple Sales table that covers all relevant data I think is needed for Sales table. In the AdventureWorks Schema, Orders are divided into Order Detial and Order Header. This is similar to how my current company's ecommerce order reportings are done. I would not change this as often, simple reporting requires additional data table joining to get wholistic view of the sales and what has occcurred on certain day.
+Employee Table in AdventureWOrks Schema has additional data compared to my Employee table. it contains information that will be useful but information such as MaritalStatus and Gender for the purpose of identifying Employee who completed sales is unnecessary. 
+
 
 # Criteria
 
